@@ -36,6 +36,9 @@ describe('functionLength', () => {
 
     // The rest parameter is excluded.
     test('rest parameters', () => {
-        expect(functionLength(function foo(...args: any[]) {})).toBe(0);
+          expect(functionLength(function foo(...args: number[]) {})).toBe(0);
+          expect(functionLength(function foo(a: number, ...args: number[]) {})).toBe(1);
+          expect(functionLength(function foo(a: number, b: number, ...args: number[]) {})).toBe(2);
+          expect(functionLength(function foo(a: number, b = 1, ...args: number[]) {})).toBe(1);
     });
 });
